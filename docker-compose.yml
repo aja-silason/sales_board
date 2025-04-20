@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+
+  database:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=sales
+      - POSTGRES_PASSWORD=sales
+      - POSTGRES_DB=salesboard 
