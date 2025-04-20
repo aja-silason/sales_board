@@ -35,4 +35,32 @@ export class UserEntity {
 
     }
 
+    public get allProps(){
+        return this.props;
+    }
+
+    /* public get id(){
+        return this.props.id;
+    }
+
+    public get username(){
+        return this.props.userName;
+    }
+
+    public get firstName(){
+        return this.props.firstName;
+    }
+
+    public get lastName(){
+        return this.props.lastName;
+    }
+
+    public get password(){
+        return this.props.password;
+    }
+
+    public get email(){
+        return this.props.email;
+    } */
+
 }

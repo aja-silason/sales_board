@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UserModel } from 'src/app/domain/user/model/user.model';
 
 
 @Module({
@@ -15,11 +16,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
                 password: configService.get('DATABASE_PASSWORD', 'sales'),
                 port: Number(configService.get('DATABASE_PORT', 5432)),
                 database: configService.get('DATABASE_DB', 'salesboard'),
-                entities: [],
+                entities: [UserModel],
                 synchronize: true,
             })
         }),
-
+        UserModel,
     ]
 })
 export class DatabaseModule {}

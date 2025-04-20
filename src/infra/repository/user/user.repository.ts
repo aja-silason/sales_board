@@ -15,9 +15,11 @@ export class TypeORMUserRepository implements UserProtocol {
         private readonly userRepo: Repository<UserModel>
     ) {}
 
-    async create(user: CreateUserDto): Promise<void> {
-        const aUser = this.userRepo.create(user);
+    async create(user: UserEntity): Promise<void> {
+
+        const aUser = this.userRepo.create(user.allProps);
         await this.userRepo.save(aUser);
+        
     }
 
     async findAll(): Promise<any[]> {

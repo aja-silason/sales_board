@@ -1,11 +1,25 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from '../../../app/domain/user/dto/create-user.dto';
 import { UpdateUserDto } from '../../../app/domain/user/dto/update-user.dto';
+import { CreateUserUseCase } from 'src/usecase/user/create';
 
 @Injectable()
 export class UserService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+
+  constructor(
+    private readonly createUserUsecase: CreateUserUseCase,
+  ) {}
+
+  async create(createUserDto: CreateUserDto) {
+
+    try {
+
+      await this.createUserUsecase.execute(createUserDto);
+      
+    } catch (error) {
+      throw new HttpException(error.message, error.statusCode)
+    }
+
   }
 
   findAll() {
