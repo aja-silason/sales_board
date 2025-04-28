@@ -1,0 +1,31 @@
+Cadastramento de agente, ilimitado
+Rastreio dos mesmos em tempo real
+Assistência em tempo Real
+Gestor da plataforma
+Atribuição de permissões
+Analise de cadastro de clientes
+
+Está aplicação tem como ojectivo o registro e controle de agentes de campo, e por sua vez os mesmo são responsáveis por efectuar diversos tipos de compras.
+
+No caso os agentes poderão efectuar vendas a clientes podendo registrar ou não os mesmos.
+
+O Gestor dos agentes poderá efectuar o registro dos agentes, atribuir permissões aos mesmos
+
+O mesmo poderá verificar as vendas que os seus agentes efectuam, fazendo assim que ele rastreia-se as vendas dos seus agentes, os productos vendidos, o total de cada venda, total do dia, total da semana, mês e ano, podendo assim gerar relatório do mesmo gerente.
+
+Admin que gerência toda a plataforma
+
+Possibilidade de adicionar clientes mas antes o agente cadastra o mesmo mas só o gerente aprova o mesmo cliente e uma vez aprovado ele passa a ser cliente oficial com um número de cliente.
+
+
+Entidades:
+
+user (username, email, password, telefone, role"role entity"),
+role (role, "admin, manager, agent"),
+employer (firstName, lastName, dateOfBirth, numberOfClient, user"user entity"),
+sales (employer"agent", product[], total),
+report (report_type"report entity", report, information{name, price, dateOfStart, dateOfEnd}),
+product (name, price),
+report_type (year, week, day)
+client (client_code, firstName, lastName, telephone, address)
+
