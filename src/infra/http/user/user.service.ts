@@ -2,12 +2,14 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from '../../../app/domain/user/dto/create-user.dto';
 import { UpdateUserDto } from '../../../app/domain/user/dto/update-user.dto';
 import { CreateUserUseCase } from 'src/usecase/user/create';
+import { ListUserUsecase } from 'src/usecase/user/list';
 
 @Injectable()
 export class UserService {
 
   constructor(
     private readonly createUserUsecase: CreateUserUseCase,
+    private readonly listUserUsecase: ListUserUsecase,
   ) {}
 
   async create(createUserDto: CreateUserDto) {
@@ -22,8 +24,14 @@ export class UserService {
 
   }
 
-  findAll() {
-    return `This action returns all user`;
+  async findAll() {
+    try {
+      
+      return await this.listUserUsecase.execute();
+
+    } catch (error) {
+      throw new HttpException(error.message, error.statusCode);
+    }
   }
 
   findOne(id: number) {

@@ -20,6 +20,8 @@ export class CreateUserUseCase {
             userName
         }*/
 
+        console.log("Usecase create", user)
+
         const aUser = UserEntity?.create(user);
 
         await this?.reposistory?.create(aUser);

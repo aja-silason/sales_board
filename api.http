@@ -1,3 +1,15 @@
-POST
+GET http://localhost:3000/user
 
-http
+###
+
+POST http://localhost:3000/user
+
+Content-Type: application/json
+
+{
+    "userName": "first_user",
+    "firstName": "First",
+    "lastName": "User",
+    "password": "1234",
+    "email": "firstuser@gmail.com"
+}

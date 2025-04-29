@@ -6,6 +6,7 @@ import { TypeORMUserRepository } from 'src/infra/repository/user/user.repository
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModel } from 'src/app/domain/user/model/user.model';
 import { CreateUserUseCase } from 'src/usecase/user/create';
+import { ListUserUsecase } from 'src/usecase/user/list';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { CreateUserUseCase } from 'src/usecase/user/create';
   providers: [
     UserService,
     CreateUserUseCase,
+    ListUserUsecase,
     {
       provide: UserProtocol,
       useClass: TypeORMUserRepository
