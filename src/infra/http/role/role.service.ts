@@ -5,6 +5,7 @@ import { CreateRoleUsecase } from 'src/usecase/role/create';
 import { ListRoleUsecase } from 'src/usecase/role/list';
 import { UpdateRoleUsecase } from 'src/usecase/role/update';
 import { FindOneRoleUseCase } from 'src/usecase/role/findOne';
+import { DeleteRoleUsecase } from 'src/usecase/role/delete';
 
 @Injectable()
 export class RoleService {
@@ -14,6 +15,7 @@ export class RoleService {
     private readonly listRoleUsecase: ListRoleUsecase,
     private readonly updateRoleUsecase: UpdateRoleUsecase,
     private readonly findOneRoleUsecase: FindOneRoleUseCase,
+    private readonly deleteRoleUsecase: DeleteRoleUsecase,
   ){}
 
   async create(role: CreateRoleDto) {
@@ -56,7 +58,13 @@ export class RoleService {
     }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} role`;
+  async remove(id: string) {
+    try {
+
+      await this.deleteRoleUsecase.execute(id);
+      
+    } catch (error) {
+      throw new HttpException(error?.message, error?.statusCode);
+    }
   }
 }

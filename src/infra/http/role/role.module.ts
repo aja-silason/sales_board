@@ -9,6 +9,7 @@ import { TypeORMRoleRepository } from 'src/infra/repository/role/role.repository
 import { ListRoleUsecase } from 'src/usecase/role/list';
 import { UpdateRoleUsecase } from 'src/usecase/role/update';
 import { FindOneRoleUseCase } from 'src/usecase/role/findOne';
+import { DeleteRoleUsecase } from 'src/usecase/role/delete';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { FindOneRoleUseCase } from 'src/usecase/role/findOne';
     ListRoleUsecase,
     UpdateRoleUsecase,
     FindOneRoleUseCase,
+    DeleteRoleUsecase,
     {
       provide: RoleProtocol,
       useClass: TypeORMRoleRepository

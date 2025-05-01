@@ -39,6 +39,13 @@ export class TypeORMRoleRepository implements RoleProtocol {
 
     }
 
+    async delete(id: string): Promise<void> {
+
+        await this.findOne(id);
+
+        await this.roleRepository.delete(id);
+    }
+
     async update(id: string, role: UpdateRoleDto): Promise<void> {
 
         const aRole = await this.roleRepository.findOne({where: {id: id}});

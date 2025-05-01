@@ -44,7 +44,7 @@ POST http://localhost:3000/role
 Content-Type: application/json
 
 {
-    "role": "Agent"
+    "role": "Agent x"
 }
 
 ###
@@ -52,12 +52,12 @@ GET http://localhost:3000/role/1c91bb5e-8e42-4a5e-a4a6-d3c930e30a5c
 
 
 ###
-PATCH http://localhost:3000/role/1c91bb5e-8e42-4a5e-a4a6-d3c930e30a5c
+PATCH http://localhost:3000/role/f25c521a-c956-4996-9e6a-8052f11707ff
 Content-Type: application/json
 
 {
-    "role": "Manager"
+    "role": "Manager 2"
 }
 
 ###
-DELETE  http://localhost:3000/role
+DELETE  http://localhost:3000/role/96b2b3f8-0dac-4492-8be3-aed82c09b4ad

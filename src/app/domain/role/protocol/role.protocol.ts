@@ -7,4 +7,5 @@ export abstract class RoleProtocol {
     abstract create(role: RoleEntity): Promise<void>;
     abstract update(id: string, role: UpdateRoleDto): Promise<void>;
     abstract findOne(id: string): Promise<RoleEntity | null | null>;
+    abstract delete(id: string): Promise<void>;
 }
