@@ -6,7 +6,7 @@ import { EmployeeModel } from "src/app/domain/employee/model/employee.model";
 import { EmployeeProtocol } from "src/app/domain/employee/protocol/employee.protocol";
 import { Repository } from "typeorm";
 
-export class EmployeeRepository implements EmployeeProtocol {
+export class TypeORMEmployeeRepository implements EmployeeProtocol {
 
     constructor(
         @InjectRepository(EmployeeModel)
@@ -20,6 +20,7 @@ export class EmployeeRepository implements EmployeeProtocol {
     async create(body: EmployeeEntity): Promise<void> {
 
         const aEmplyee = this.repository.create(body.allProps);
+        
         await this.repository.save(aEmplyee);
 
     }

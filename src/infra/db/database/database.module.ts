@@ -5,6 +5,8 @@ import { UserModel } from 'src/app/domain/user/model/user.model';
 import { UserModule } from 'src/infra/http/user/user.module';
 import { RoleModel } from 'src/app/domain/role/model/role.model';
 import { RoleModule } from 'src/infra/http/role/role.module';
+import { EmployeeModule } from 'src/infra/http/employee/employee.module';
+import { EmployeeModel } from 'src/app/domain/employee/model/employee.model';
 
 
 @Module({
@@ -22,13 +24,14 @@ import { RoleModule } from 'src/infra/http/role/role.module';
                 database: configService.get('DATABASE_DB', 'salesboard'),
                 
                 entities: [
-                    UserModel, RoleModel
+                    UserModel, RoleModel, EmployeeModel
                 ],
                 synchronize: true,
             })
         }),
         UserModule,
-        RoleModule
+        RoleModule,
+        EmployeeModule
     ]
     
 })

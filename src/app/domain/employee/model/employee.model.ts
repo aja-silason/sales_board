@@ -18,10 +18,10 @@ export class EmployeeModel {
     @Column({type: 'varchar'})
     identificaion: string;
 
-    @Column({name: 'created_at', type: 'datetime', nullable: true, default: () => 'CURRENT_TIMESTAMP'})
+    @Column({name: 'created_at', type: 'timestamp', nullable: true, default: () => 'CURRENT_TIMESTAMP'})
     createdAt: Date;
 
-    @Column({name: 'updated_at', type: 'datetime', nullable: true, default: () => 'CURRENT_TIMESTAMP'})
+    @Column({name: 'updated_at', type: 'timestamp', nullable: true, default: () => 'CURRENT_TIMESTAMP'})
     updatedAt: Date;
 
 }
