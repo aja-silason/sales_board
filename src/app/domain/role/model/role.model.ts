@@ -10,9 +10,9 @@ export class RoleModel {
     role: string;
 
     @Column({name:'created_at', type: 'timestamp', nullable: true, default: () => 'CURRENT_TIMESTAMP'})
-    createdAt: string;
+    createdAt: Date;
 
-    @Column({name:'updated_at', type: 'timestamp', nullable: true, default: () => 'CURRENT_TIMESTAMP'})
-    updatedAt: string;
+    @Column({name: 'updated_at', type: 'timestamp', nullable: true, default: () => 'CURRENT_TIMESTAMP'})
+    updatedAt: Date;
 
 }
