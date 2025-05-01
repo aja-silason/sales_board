@@ -7,14 +7,14 @@ import { UserProtocol } from "src/app/domain/user/protocol/user.protocol";
 export class CreateUserUseCase {
 
     constructor(
-        private readonly reposistory: UserProtocol
+        private readonly protocol: UserProtocol
     ) {}
 
     public async execute(user: UserProps) {
 
         const aUser = UserEntity?.create(user);
 
-        await this?.reposistory?.create(aUser);
+        await this?.protocol?.create(aUser);
 
     }
 

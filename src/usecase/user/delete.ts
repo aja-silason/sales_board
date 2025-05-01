@@ -5,11 +5,11 @@ import { UserProtocol } from "src/app/domain/user/protocol/user.protocol";
 export class DeleteUserUsecase {
 
     constructor(
-        private readonly repository: UserProtocol
+        private readonly protocol: UserProtocol
     ){}
 
     async execute(id: string){
-        await this.repository.delete(id);
+        await this.protocol.delete(id);
     }
 
 }

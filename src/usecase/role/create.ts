@@ -6,12 +6,12 @@ import { RoleProtocol } from "src/app/domain/role/protocol/role.protocol";
 export class CreateRoleUsecase {
 
     constructor(
-        private readonly repository: RoleProtocol
+        private readonly protocol: RoleProtocol
     ){}
 
     public async execute(role: RoleProps){
         const aRole = RoleEntity.create(role);
-        await this.repository.create(aRole);
+        await this.protocol.create(aRole);
     }
 
 }

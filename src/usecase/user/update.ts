@@ -6,11 +6,11 @@ import { UserProtocol } from "src/app/domain/user/protocol/user.protocol";
 export class UpdateUserUsecase {
     
     constructor(
-        private readonly repository: UserProtocol
+        private readonly protocol: UserProtocol
     ){}
 
     async execute(id: string, body: UpdateUserDto){
-        await this.repository.update(id, body);
+        await this.protocol.update(id, body);
     }
 
 }

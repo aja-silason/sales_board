@@ -5,11 +5,11 @@ import { UserProtocol } from "src/app/domain/user/protocol/user.protocol";
 export class FindOneUserUsecase {
 
     constructor(
-        private readonly repository: UserProtocol
+        private readonly protocol: UserProtocol
     ){}
 
     async execute(id: string){
-        return await this.repository.findOne(id);
+        return await this.protocol.findOne(id);
     }
 
 }
