@@ -1,7 +1,10 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity({name: 'employee'})
 export class EmployeeModel {
+
+    @PrimaryColumn({type: 'varchar'})
+    id: string;
 
     @Column({type: 'varchar'})
     firstName: string;
