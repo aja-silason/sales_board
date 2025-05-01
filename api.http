@@ -44,15 +44,20 @@ POST http://localhost:3000/role
 Content-Type: application/json
 
 {
-    "role": "Gestoriiii"
+    "role": "Agent"
 }
 
 ###
-GET http://localhost:3000/role/
+GET http://localhost:3000/role/1c91bb5e-8e42-4a5e-a4a6-d3c930e30a5c
 
 
 ###
-PATCH http://localhost:3000/role
+PATCH http://localhost:3000/role/1c91bb5e-8e42-4a5e-a4a6-d3c930e30a5c
+Content-Type: application/json
+
+{
+    "role": "Manager"
+}
 
 ###
 DELETE  http://localhost:3000/role

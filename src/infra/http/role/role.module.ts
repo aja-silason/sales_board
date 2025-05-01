@@ -7,6 +7,8 @@ import { CreateRoleUsecase } from 'src/usecase/role/create';
 import { RoleProtocol } from 'src/app/domain/role/protocol/role.protocol';
 import { TypeORMRoleRepository } from 'src/infra/repository/role/role.repository';
 import { ListRoleUsecase } from 'src/usecase/role/list';
+import { UpdateRoleUsecase } from 'src/usecase/role/update';
+import { FindOneRoleUseCase } from 'src/usecase/role/findOne';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { ListRoleUsecase } from 'src/usecase/role/list';
     RoleService,
     CreateRoleUsecase,
     ListRoleUsecase,
+    UpdateRoleUsecase,
+    FindOneRoleUseCase,
     {
       provide: RoleProtocol,
       useClass: TypeORMRoleRepository

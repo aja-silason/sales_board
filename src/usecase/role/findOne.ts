@@ -1,16 +1,15 @@
 import { Injectable } from "@nestjs/common";
-import { UpdateRoleDto } from "src/app/domain/role/dto/update-role.dto";
 import { RoleProtocol } from "src/app/domain/role/protocol/role.protocol";
 
 @Injectable()
-export class UpdateRoleUsecase {
+export class FindOneRoleUseCase {
 
     constructor(
         private readonly protocol: RoleProtocol
     ){}
 
-    async execute(id: string, role: UpdateRoleDto){
-        await this.protocol.update(id, role);
+    async execute(id: string){
+        return await this.protocol.findOne(id);
     }
 
 }
