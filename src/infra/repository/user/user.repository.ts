@@ -1,5 +1,6 @@
 import { ConflictException, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { RoleModel } from "src/app/domain/role/model/role.model";
 import { UpdateUserDto } from "src/app/domain/user/dto/update-user.dto";
 import { UserEntity } from "src/app/domain/user/entities/user.entity";
 import { UserModel } from "src/app/domain/user/model/user.model";
@@ -7,31 +8,42 @@ import { UserProtocol } from "src/app/domain/user/protocol/user.protocol";
 import { Repository } from "typeorm";
 
 @Injectable()
-export class TypeORMUserRepository implements UserProtocol {
+export class TypeORMuserRepositorysitory implements UserProtocol {
 
     constructor(
         @InjectRepository(UserModel)
-        private readonly userRepo: Repository<UserModel>
+        private readonly userRepository: Repository<UserModel>,
+
+        @InjectRepository(RoleModel)
+        private readonly roleRepository: Repository<RoleModel>,
     ) {}
 
     async create(user: UserEntity): Promise<void> {
 
-        const existUser = await this.userRepo?.findOne({where: {email: user.allProps.email}});
-
+        
+        const existUser = await this.userRepository?.findOne({where: {email: user?.allProps?.email}});
+        
         if(existUser) throw new ConflictException(`E-mail ${existUser.email} is already exists`);
-        
-        const aUser = this.userRepo.create(user.allProps);
-        const a = await this.userRepo.save(aUser);
+
+        const role = await this.roleRepository.findOne({where: {id: user?.allProps?.roleId}});        
+
+        const aUser = this?.userRepository?.create({
+            ...user?.allProps,
+            role: {...role}
+        });
+
+
+        await this.userRepository.save(aUser);
         
     }
 
-    async findAll(): Promise<any[]> {
+    async findAll(): Promise<UserModel[]> {
         
-        return await this.userRepo?.find();
+        return await this.userRepository?.find();
     }
 
-    async findOne(id: string): Promise<UserEntity | null | any> {
-        const aUser = await this.userRepo.findOne({where: {id: id}});
+    async findOne(id: string): Promise<UserModel | null | any> {
+        const aUser = await this.userRepository.findOne({where: {id: id}});
 
         if(!aUser) throw new NotFoundException("User not found in the system");
 
@@ -39,21 +51,21 @@ export class TypeORMUserRepository implements UserProtocol {
     }
 
     async update(id: string, user: UpdateUserDto): Promise<void> {
-        const aUser = await this.userRepo.findOne({where: {id: id}});
+        const aUser = await this.userRepository.findOne({where: {id: id}});
 
         if(!aUser) throw new NotFoundException("User not found in the system");
         
         aUser.updatedAt = new Date();
 
-        this.userRepo.merge(aUser, user);
+        this.userRepository.merge(aUser, user);
 
-        await this.userRepo.save(aUser);
+        await this.userRepository.save(aUser);
     }
 
     async delete(id: string): Promise<void> {
         
         await this.findOne(id);
-        await this.userRepo.delete(id);
+        await this.userRepository.delete(id);
 
     }
 

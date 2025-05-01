@@ -7,6 +7,7 @@ export type UserProps = {
     lastName: string;
     password: string;
     email: string;
+    roleId: string
 }
 
 export class UserEntity {
