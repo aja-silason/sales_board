@@ -1,16 +1,16 @@
 import { Injectable } from "@nestjs/common";
+import { UpdateUserDto } from "src/app/domain/user/dto/update-user.dto";
 import { UserProtocol } from "src/app/domain/user/protocol/user.protocol";
 
 @Injectable()
-export class ListUserUsecase {
-
+export class UpdateUserUsecase {
+    
     constructor(
         private readonly repository: UserProtocol
     ){}
 
-    public async execute(){
-        return await this.repository?.findAll();
+    async execute(id: string, body: UpdateUserDto){
+        await this.repository.update(id, body);
     }
-
 
 }

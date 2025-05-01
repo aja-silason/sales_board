@@ -1,15 +1,34 @@
 GET http://localhost:3000/user
 
 ###
+GET http://localhost:3000/user/3e5c86a7-86d6-4201-a290-146ae63aa41e
+
+###
 
 POST http://localhost:3000/user
-
 Content-Type: application/json
 
 {
-    "userName": "first_user",
-    "firstName": "First",
+    "userName": "second_user",
+    "firstName": "Second",
     "lastName": "User",
     "password": "1234",
-    "email": "firstuser@gmail.com"
+    "email": "seconduser@gmail.com"
 }
+
+###
+
+PATCH http://localhost:3000/user/3e5c86a7-86d6-4201-a290-146ae63aa41e
+Content-Type: application/json
+
+{
+    "userName": "manager_user",
+    "firstName": "Manager",
+    "lastName": "User",
+    "email": "manageruser@gmail.com"
+}
+
+###
+DELETE http://localhost:3000/user/cabf2ca1-27d9-49b4-a79f-808345a25cb1
+
+###

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserModel } from 'src/app/domain/user/model/user.model';
-import { databaseProviders } from './database.providers';
+import { UserModule } from 'src/infra/http/user/user.module';
 
 
 @Module({
@@ -13,27 +13,18 @@ import { databaseProviders } from './database.providers';
 
             useFactory: (configService: ConfigService) => ({
                 type: 'postgres',
-                host: 'localhost',
-                username: 'sales',
-                password: 'sales',
-                port: 5432,
-                database: 'salesboard',
-                /*
-                url: 'DATABASE_URL',
                 host: configService.get('DATABASE_HOST', 'localhost'),
                 username: configService.get('DATABASE_USER', 'sales'),
                 password: configService.get('DATABASE_PASSWORD', 'sales'),
                 port: Number(configService.get('DATABASE_PORT', 5432)),
-                database: configService.get('DATABASE_DB', 'salesboard'),*
+                database: configService.get('DATABASE_DB', 'salesboard'),
+                
                 entities: [UserModel],
-                synchronize: true,*/
+                synchronize: true,
             })
         }),
-        UserModel,
+        UserModule,
     ]
     
-
-    /*providers: [...databaseProviders],
-    exports: [...databaseProviders]*/
 })
 export class DatabaseModule {}

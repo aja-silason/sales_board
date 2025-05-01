@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { CreateUserDto } from "src/app/domain/user/dto/create-user.dto";
 import { UserEntity, UserProps } from "src/app/domain/user/entities/user.entity";
-import { UserProtocol } from "src/app/domain/user/protocol/user.repository";
+import { UserProtocol } from "src/app/domain/user/protocol/user.protocol";
 
 @Injectable()
 export class CreateUserUseCase {
@@ -11,16 +11,6 @@ export class CreateUserUseCase {
     ) {}
 
     public async execute(user: UserProps) {
-
-        /*const payload: UserProps = {
-            email,
-            firstName,
-            lastName,
-            password,
-            userName
-        }*/
-
-        console.log("Usecase create", user)
 
         const aUser = UserEntity?.create(user);
 

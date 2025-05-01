@@ -15,7 +15,6 @@ export class UserEntity {
 
     public static create(props: UserProps, id?: string){
         this.validate(props);
-        console.log("Entity", props)
 
         return new UserEntity({
             id: crypto.randomUUID(),

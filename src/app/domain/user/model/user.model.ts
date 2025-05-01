@@ -9,22 +9,22 @@ export class UserModel {
     @Column({nullable: true})
     userName?: string;
     
-    @Column()
+    @Column({type: 'varchar'})
     firstName: string;
     
-    @Column()
+    @Column({type: 'varchar'})
     lastName: string;
     
-    @Column()
+    @Column({type: 'varchar'})
     password: string;
     
-    @Column()    
+    @Column({type: 'varchar'})    
     email: string;
 
     @Column({name: 'created_at', type: 'timestamp', nullable: true, default: () => 'CURRENT_TIMESTAMP'})
     createdAt: Date;
-
+    
     @Column({name: 'updated_at', type: 'timestamp', nullable: true, default: () => 'CURRENT_TIMESTAMP'})
-    updatedAt: Date
+    updatedAt: Date;
 
 }
