@@ -1,12 +1,6 @@
-export enum ROLE {
-    IS_ADMIN = 'admin',
-    IS_MANAGER = 'manager',
-    IS_AGENT = 'agent',
-}
-
 export type RoleProps = {
     id?: string;
-    role: ROLE
+    role: string
 }
 
 export class RoleEntity {
