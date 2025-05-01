@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserModel } from 'src/app/domain/user/model/user.model';
 import { UserModule } from 'src/infra/http/user/user.module';
+import { RoleModel } from 'src/app/domain/role/model/role.model';
 
 
 @Module({
@@ -19,7 +20,7 @@ import { UserModule } from 'src/infra/http/user/user.module';
                 port: Number(configService.get('DATABASE_PORT', 5432)),
                 database: configService.get('DATABASE_DB', 'salesboard'),
                 
-                entities: [UserModel],
+                entities: [UserModel, RoleModel],
                 synchronize: true,
             })
         }),

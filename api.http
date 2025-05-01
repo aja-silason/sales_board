@@ -32,3 +32,17 @@ Content-Type: application/json
 DELETE http://localhost:3000/user/cabf2ca1-27d9-49b4-a79f-808345a25cb1
 
 ###
+
+###ROLE
+
+###
+GET http://localhost:3000/role
+
+###
+
+POST http://localhost:3000/role
+Content-Type: application/json
+
+{
+    "role": "Administrator"
+}

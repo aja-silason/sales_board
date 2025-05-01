@@ -1,4 +1,4 @@
-enum ROLE {
+export enum ROLE {
     IS_ADMIN = 'admin',
     IS_MANAGER = 'manager',
     IS_AGENT = 'agent',
@@ -13,14 +13,16 @@ export class RoleEntity {
 
     constructor(private readonly props: RoleProps){}
 
-    public static async create(props: RoleProps){
+    public static create(props: RoleProps, id?: string){
+        
         return new RoleEntity({
             id: crypto.randomUUID(),
-            ...props
-        });
+            role: props.role
+        })
+
     }
 
-    public get getAllProps(){
+    public get allProps(){
         return this.props;
     }
 

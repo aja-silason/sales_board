@@ -10,8 +10,10 @@ export class CreateRoleUsecase {
     ){}
 
     public async execute(role: RoleProps){
-        const aRole = RoleEntity.create(role);
-        await this.protocol.create(aRole);
+        
+        const aRole: any = RoleEntity?.create(role);
+        
+        await this?.protocol?.create(aRole)
     }
 
 }
