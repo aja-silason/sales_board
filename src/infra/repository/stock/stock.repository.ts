@@ -28,12 +28,12 @@ export class TypeORMStockRepository implements StockProtocol {
 
         if(existStockProduct) throw new ConflictException("Product is already in the stock");
 
-        //const aStock = this.repository.create({
-        //    ...body.allProps,
-        //    product: {...product}
-        //})
+        const aStock = this.repository.create({
+            ...body.allProps,
+            product: {...product}
+        })
         
-        //await this.repository.save(aStock);
+        await this.repository.save(aStock);
 
     }
 
