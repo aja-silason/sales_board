@@ -13,9 +13,9 @@ export class RoleEntity {
 
         this.validate(props);
         
+        props.id = crypto.randomUUID();
         return new RoleEntity({
-            id: crypto.randomUUID(),
-            role: props.role
+            ...props
         })
 
     }

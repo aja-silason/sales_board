@@ -1,4 +1,4 @@
-import { NotFoundException } from "@nestjs/common";
+import { HttpException, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { UpdateEmployeeDto } from "src/app/domain/employee/dto/update-employee.dto";
 import { EmployeeEntity } from "src/app/domain/employee/entities/employee.entity";
@@ -48,10 +48,11 @@ export class TypeORMEmployeeRepository implements EmployeeProtocol {
 
         if(!aEmplyee) throw new NotFoundException("Employee not found");
 
-        this.repository.merge({...aEmplyee, updatedAt: new Date()}, newBody);
+        aEmplyee.updatedAt = new Date();
+
+        this.repository.merge(aEmplyee, newBody);
 
         await this.repository.save(aEmplyee);
-
 
     }
 

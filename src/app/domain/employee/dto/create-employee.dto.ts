@@ -24,5 +24,10 @@ export class CreateEmployeeDto {
     @IsString()
     @IsNotEmpty()
     @ApiProperty()
-    identificaion: string;
+    identification: string;
+
+    @IsString()
+    @ApiProperty()
+    @IsNotEmpty()
+    userId: string
 }

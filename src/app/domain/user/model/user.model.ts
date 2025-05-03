@@ -11,12 +11,6 @@ export class UserModel {
     userName?: string;
     
     @Column({type: 'varchar'})
-    firstName: string;
-    
-    @Column({type: 'varchar'})
-    lastName: string;
-    
-    @Column({type: 'varchar'})
     password: string;
     
     @Column({type: 'varchar'})    

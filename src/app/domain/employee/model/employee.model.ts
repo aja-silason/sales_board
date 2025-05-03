@@ -16,7 +16,7 @@ export class EmployeeModel {
     dateOfBirth: Date;
 
     @Column({type: 'varchar'})
-    identificaion: string;
+    identification: string;
 
     @Column({name: 'created_at', type: 'timestamp', nullable: true, default: () => 'CURRENT_TIMESTAMP'})
     createdAt: Date;

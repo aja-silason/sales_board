@@ -1,35 +1,30 @@
 import { BadRequestException } from "@nestjs/common";
-import { CreateEmployeeDto } from "../dto/create-employee.dto";
 
 export type employeeProps = {
     id?: string;
     firstName: string;
     lastName: string;
     dateOfBirth: Date;
-    identificaion: string;
+    identification: string;
 }
 
 export class EmployeeEntity {
 
-    constructor(private props: employeeProps){}
+    public constructor(private readonly props: employeeProps){}
 
     public static create(props: employeeProps, id?: string){
-
         this.validate(props);
 
+        props.id = crypto.randomUUID();
         return new EmployeeEntity({
-            id: crypto.randomUUID(),
-            dateOfBirth: props.dateOfBirth,
-            firstName: props.firstName,
-            identificaion: props.identificaion,
-            lastName: props.lastName,
+            ...props
         })
 
     }
 
     private static validate(props: employeeProps){
 
-        const isValidate: Array<keyof employeeProps> = ["firstName", "lastName", "identificaion", "dateOfBirth"];
+        const isValidate: Array<keyof employeeProps> = ["firstName", "lastName", "identification", "dateOfBirth"];
         for(const key of isValidate){
             const value = props[key];
             if(value == undefined || value == null){
