@@ -8,8 +8,8 @@ export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Post()
-  create(@Body() createProductDto: CreateProductDto) {
-    return this.productService.create(createProductDto);
+  create(@Body() body: CreateProductDto) {
+    return this.productService.create(body);
   }
 
   @Get()

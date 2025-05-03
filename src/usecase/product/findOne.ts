@@ -10,7 +10,7 @@ export class FindOneProductUsecase {
 
     async execute(id: string){
 
-        await this.protocol.findOne(id);
+        return await this.protocol.findOne(id);
 
     }
 

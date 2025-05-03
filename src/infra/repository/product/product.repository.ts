@@ -22,7 +22,7 @@ export class TypeORMProductRepository implements ProductProtocol {
 
         if(existProduct) throw new ConflictException("Product is already exist"); 
 
-        const aProduct = await this.respository.create(body.allProducts);
+        const aProduct = this.respository.create(body.allProducts);
 
         await this.respository.save(aProduct);
 
@@ -30,7 +30,7 @@ export class TypeORMProductRepository implements ProductProtocol {
 
     async findOne(id: string): Promise<ProductModel | null | any> {
         const aProduct = await this.respository.findOne({where: {id: id}})
-        
+
         if(!aProduct) throw new NotFoundException("Product not found");
 
         return aProduct;

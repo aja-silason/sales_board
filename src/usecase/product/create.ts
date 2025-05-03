@@ -11,7 +11,7 @@ export class CreateProductUsecase {
     ){}
 
     async execute(body: CreateProductDto) {
-
+        
         const aProduct = ProductEntity.create(body)
 
         await this.protocol.create(aProduct);
