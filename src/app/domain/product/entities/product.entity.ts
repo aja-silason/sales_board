@@ -31,4 +31,8 @@ export class ProductEntity {
         }
     }
 
+    public get allProducts() {
+        return this.props;
+    }
+
 }

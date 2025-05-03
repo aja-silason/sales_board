@@ -4,6 +4,7 @@ import { ProductProtocol } from "src/app/domain/product/protocol/product.protoco
 
 @Injectable()
 export class UpdateProductUsecase{
+    
     constructor(
         private readonly protocol: ProductProtocol
     ){}
