@@ -6,7 +6,7 @@ export abstract class ProductProtocol {
 
     abstract getAll(): Promise<ProductModel[]>;
     abstract create(body: ProductEntity): Promise<void>;
-    abstract findOne(): Promise< ProductModel | null | any>;
+    abstract findOne(id: string): Promise< ProductModel | null | any>;
     abstract update(id: string, newBody: UpdateProductDto): Promise<void>;
     abstract delete(id: string): Promise<void>;
 
