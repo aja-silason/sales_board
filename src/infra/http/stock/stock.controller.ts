@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { StockService } from './stock.service';
 import { CreateStockDto } from '../../../app/domain/stock/dto/create-stock.dto';
 import { UpdateStockDto } from '../../../app/domain/stock/dto/update-stock.dto';
+import { EncreaseDescreaseStockDto } from 'src/app/domain/stock/dto/encrease-decrease-stock.dto';
 
 @Controller('stock')
 export class StockController {
@@ -31,4 +32,15 @@ export class StockController {
   remove(@Param('id') id: string) {
     return this.stockService.remove(id);
   }
+
+  @Patch('decrease/:id')
+  decrement(@Param('id') id: string, @Body() value: EncreaseDescreaseStockDto) {
+    return this.stockService.decrement(id, value);
+  }
+
+  @Patch('encrease/:id')
+  ecrement(@Param('id') id: string, @Body() value: EncreaseDescreaseStockDto) {
+    return this.stockService.ecrement(id, value);
+  }
+
 }

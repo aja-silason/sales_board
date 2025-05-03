@@ -9,5 +9,7 @@ export abstract class StockProtocol {
     abstract findOne(id: string): Promise< StockModel | null | any>;
     abstract update(id: string, newBody: UpdateStockDto): Promise<void>;
     abstract delete(id: string): Promise<void>;
+    abstract decrement(id: string, value: number): Promise<void>;
+    abstract encrement(id: string, value: number): Promise<void>;
 
 }
