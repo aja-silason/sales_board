@@ -1,5 +1,6 @@
 import { decimalTransformer } from "src/util/decimalTranformer";
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, OneToOne, PrimaryColumn } from "typeorm";
+import { StockModel } from "../../stock/model/stock.model";
 
 @Entity()
 export class ProductModel {
@@ -11,9 +12,10 @@ export class ProductModel {
     product: string;
 
     @Column('decimal', {precision: 10, scale: 2, transformer: decimalTransformer})
-    //@Column({type: 'decimal', precision: 10, scale: 2})
-    //@Column({type: 'int'})
     price: number;
+
+    @OneToOne(() => StockModel, stock => stock.product)
+    stock: StockModel;
 
     @Column({name: 'created_at', type: 'timestamp', nullable: true, default: () => 'CURRENT_TIMESTAMP'})
     createdAt: Date;
