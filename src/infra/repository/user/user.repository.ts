@@ -20,13 +20,12 @@ export class TypeORMuserRepositorysitory implements UserProtocol {
 
     async create(user: UserEntity): Promise<void> {
 
-        
         const existUser = await this.userRepository?.findOne({where: {email: user?.allProps?.email}});
         
         if(existUser) throw new ConflictException(`E-mail ${existUser.email} is already exists`);
 
         const role = await this.roleRepository.findOne({where: {id: user?.allProps?.roleId}});        
-
+ 
         const aUser = this?.userRepository?.create({
             ...user?.allProps,
             role: {...role}

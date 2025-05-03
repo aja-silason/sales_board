@@ -18,11 +18,11 @@ export class UserService {
     private readonly updateUserUsecase: UpdateUserUsecase,
   ) {}
 
-  async create(createUserDto: CreateUserDto) {
+  create(createUserDto: CreateUserDto) {
 
     try {
 
-      await this.createUserUsecase.execute(createUserDto);
+      return this.createUserUsecase.execute(createUserDto);
       
     } catch (error) {
       throw new HttpException(error.message, error.statusCode)
@@ -30,40 +30,40 @@ export class UserService {
 
   }
 
-  async findAll() {
+  findAll() {
     try {
       
-      return await this.listUserUsecase.execute();
+      return this.listUserUsecase.execute();
 
     } catch (error) {
       throw new HttpException(error.message, error.statusCode);
     }
   }
 
-  async findOne(id: string) {
+  findOne(id: string) {
     try {
       
-      return await this.findOneUserUsecase.execute(id);
+      return this.findOneUserUsecase.execute(id);
 
     } catch (error) {
       throw new HttpException(error?.message, error?.statusCode);
     }
   }
 
-  async update(id: string, updateUserDto: UpdateUserDto) {
+  update(id: string, updateUserDto: UpdateUserDto) {
     try {
       
-      await this.updateUserUsecase.execute(id, updateUserDto)
+      return this.updateUserUsecase.execute(id, updateUserDto)
 
     } catch (error) {
       throw new HttpException(error?.message, error?.statusCode);
     }
   }
 
-  async remove(id: string) {
+  remove(id: string) {
     try {
 
-      await this.deleteUserUsecase.execute(id);
+      return this.deleteUserUsecase.execute(id);
 
     } catch (error) {
       throw new HttpException(error?.message, error?.statusCode);

@@ -18,50 +18,50 @@ export class RoleService {
     private readonly deleteRoleUsecase: DeleteRoleUsecase,
   ){}
 
-  async create(role: CreateRoleDto) {
+  create(role: CreateRoleDto) {
     try {
 
-      await this.createRoleUsecase.execute(role);
+      return this.createRoleUsecase.execute(role);
 
     } catch (error) {
       throw new HttpException(error?.message, error?.statusCode);
     }
   }
 
-  async findAll() {
+  findAll() {
     try {
       
-      return await this.listRoleUsecase.execute();
+      return this.listRoleUsecase.execute();
 
     } catch (error) {
       throw new HttpException(error?.message, error?.statusCode);
     }
   }
 
-  async findOne(id: string) {
+  findOne(id: string) {
     try {
 
-      return await this.findOneRoleUsecase.execute(id)
+      return this.findOneRoleUsecase.execute(id)
       
     } catch (error) {
       throw new HttpException(error?.message, error?.statusCode);
     }
   }
 
-  async update(id: string, role: UpdateRoleDto) {
+  update(id: string, role: UpdateRoleDto) {
     try {
       
-      await this.updateRoleUsecase.execute(id, role)
+      return this.updateRoleUsecase.execute(id, role)
 
     } catch (error) {
       throw new HttpException(error?.message, error?.statusCode);
     }
   }
 
-  async remove(id: string) {
+  remove(id: string) {
     try {
 
-      await this.deleteRoleUsecase.execute(id);
+      return this.deleteRoleUsecase.execute(id);
       
     } catch (error) {
       throw new HttpException(error?.message, error?.statusCode);

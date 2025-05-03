@@ -12,9 +12,10 @@ export class CreateEmployeeUsecase {
 
     async execute(body: CreateEmployeeDto) {
 
-        const aEmployee = EmployeeEntity.create(body);
+        const aEmployee = EmployeeEntity?.create(body);
 
-        await this.protocol.create(aEmployee);
+        await this?.protocol?.create(aEmployee);
+
     }
 
 }

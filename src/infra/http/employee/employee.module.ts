@@ -10,10 +10,11 @@ import { ListEmployeeUsecase } from 'src/usecase/employee/list';
 import { FindOneEmployeeUsecase } from 'src/usecase/employee/findOne';
 import { UpdateEmployeeUsecase } from 'src/usecase/employee/update';
 import { DeleteEmployeeUsecase } from 'src/usecase/employee/delete';
+import { UserModel } from 'src/app/domain/user/model/user.model';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([EmployeeModel])
+    TypeOrmModule.forFeature([EmployeeModel, UserModel])
   ],
   controllers: [EmployeeController],
   providers: [

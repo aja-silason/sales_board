@@ -21,7 +21,7 @@ export class EmployeeService {
   create(body: CreateEmployeeDto) {
     try {
 
-      this.createUsecase.execute(body)
+      return this.createUsecase.execute(body)
       
     } catch (error) {
       throw new HttpException(error?.message, error?.statusCode);
@@ -46,7 +46,7 @@ export class EmployeeService {
 
   update(id: string, newData: UpdateEmployeeDto) {
     try {
-      this.updateUsecase.execute(id, newData)
+      return this.updateUsecase.execute(id, newData)
     } catch (error) {
       throw new HttpException(error?.message, error?.statusCode);
     }
@@ -54,7 +54,7 @@ export class EmployeeService {
 
   remove(id: string) {
     try {
-     this.delteUsecase.execute(id);
+     return this.delteUsecase.execute(id);
     } catch (error) {
       throw new HttpException(error?.message, error?.statusCode);
     }

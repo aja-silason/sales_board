@@ -1,16 +1,21 @@
-import { HttpException, NotFoundException } from "@nestjs/common";
+import { ConflictException, HttpException, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { UpdateEmployeeDto } from "src/app/domain/employee/dto/update-employee.dto";
 import { EmployeeEntity } from "src/app/domain/employee/entities/employee.entity";
 import { EmployeeModel } from "src/app/domain/employee/model/employee.model";
 import { EmployeeProtocol } from "src/app/domain/employee/protocol/employee.protocol";
+import { UserModel } from "src/app/domain/user/model/user.model";
 import { Repository } from "typeorm";
 
 export class TypeORMEmployeeRepository implements EmployeeProtocol {
 
     constructor(
         @InjectRepository(EmployeeModel)
-        private readonly repository: Repository<EmployeeModel>
+        private readonly repository: Repository<EmployeeModel>,
+
+        @InjectRepository(UserModel)
+        private readonly userRepository: Repository<UserModel>
+ 
     ){}
 
     async findAll(): Promise<EmployeeModel[]> {
@@ -19,9 +24,22 @@ export class TypeORMEmployeeRepository implements EmployeeProtocol {
 
     async create(body: EmployeeEntity): Promise<void> {
 
-        const aEmplyee = this.repository.create(body.allProps);
+        const existEmployee = await this.repository.findOne({where: {identification: body.allProps.identification}})
+
+        if(existEmployee) throw new ConflictException("Employee already exist");
+
+        const user = await this.userRepository.findOne({where: {id: body?.allProps?.id}});
+
+        if(!user) throw new NotFoundException("User not found");
+
+        const aEmplyee = this.repository.create({
+            ...body?.allProps,
+            user: {...user}
+        });
+
+        console.log(aEmplyee)
         
-        await this.repository.save(aEmplyee);
+        //await this.repository.save(aEmplyee);
 
     }
 
