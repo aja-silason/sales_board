@@ -6,9 +6,10 @@ import { DatabaseModule } from './infra/db/database/database.module';
 import { ConfigureModule } from './infra/configure/configure.module';
 import { RoleModule } from './infra/http/role/role.module';
 import { EmployeeModule } from './infra/http/employee/employee.module';
+import { ProductModule } from './infra/http/product/product.module';
 
 @Module({
-  imports: [UserModule, DatabaseModule, ConfigureModule, RoleModule, EmployeeModule],
+  imports: [UserModule, DatabaseModule, ConfigureModule, RoleModule, EmployeeModule, ProductModule],
   controllers: [AppController],
   providers: [AppService],
 })

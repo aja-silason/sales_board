@@ -28,7 +28,7 @@ export class TypeORMEmployeeRepository implements EmployeeProtocol {
 
         if(existEmployee) throw new ConflictException("Employee already exist");
 
-        const user = await this.userRepository.findOne({where: {id: body?.allProps?.id}});
+        const user = await this.userRepository.findOne({where: {id: body?.allProps?.userId}});
 
         if(!user) throw new NotFoundException("User not found");
 
@@ -36,10 +36,8 @@ export class TypeORMEmployeeRepository implements EmployeeProtocol {
             ...body?.allProps,
             user: {...user}
         });
-
-        console.log(aEmplyee)
         
-        //await this.repository.save(aEmplyee);
+        await this.repository.save(aEmplyee);
 
     }
 

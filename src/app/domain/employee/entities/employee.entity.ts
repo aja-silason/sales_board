@@ -6,6 +6,7 @@ export type employeeProps = {
     lastName: string;
     dateOfBirth: Date;
     identification: string;
+    userId: string
 }
 
 export class EmployeeEntity {
