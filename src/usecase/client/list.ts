@@ -8,7 +8,7 @@ export class ListClientUsecase {
         private readonly protocol: ClientProtocol
     ){}
 
-    async execte(){
+    async execute(){
 
         return await this.protocol.getAll();
 

@@ -9,7 +9,7 @@ export class FindOneClientCodeClientUsecase {
     ){}
 
     async execute(clientCode: string){
-
+        
         return await this.protocol.finByClientCode(clientCode);
 
     }

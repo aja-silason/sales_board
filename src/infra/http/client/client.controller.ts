@@ -32,9 +32,9 @@ export class ClientController {
     return this.clientService.remove(id);
   }
 
-  @Get('code/:code')
-  findOneClientCode(@Param('id') id: string) {
-    return this.clientService.remove(id);
+  @Get('/code/:code')
+  findOneClientCode(@Param('code') id: string) {
+    return this.clientService.findOneClientCode(id);
   }
 
 }

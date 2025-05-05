@@ -9,4 +9,5 @@ export abstract class ClientProtocol {
     abstract delete(id: string): Promise<void>;
     abstract update(id: string, newBody: UpdateClientDto): Promise<void>;
     abstract finByClientCode(clientCode: string): Promise<ClientModel | null | any>;
+    abstract finByTelephone(telephone: string): Promise<ClientModel | null | any>;
 }

@@ -21,11 +21,11 @@ export class ClientService {
   ){}
 
   async create(body: CreateClientDto) {
-    return await this.createClientUsecase.execte(body);
+    return await this.createClientUsecase.execute(body);
   }
 
   async findAll() {
-    return await this.listClientUsecase.execte();
+    return await this.listClientUsecase.execute();
   }
 
   async findOne(id: string) {

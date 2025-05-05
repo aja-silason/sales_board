@@ -42,7 +42,7 @@ export class ClientEntity {
     }
 
     public get allProps(){
-        return this.allProps;
+        return this.props;
     }
 
 }
