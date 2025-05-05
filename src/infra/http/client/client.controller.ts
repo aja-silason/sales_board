@@ -31,4 +31,10 @@ export class ClientController {
   remove(@Param('id') id: string) {
     return this.clientService.remove(id);
   }
+
+  @Get('code/:code')
+  findOneClientCode(@Param('id') id: string) {
+    return this.clientService.remove(id);
+  }
+
 }

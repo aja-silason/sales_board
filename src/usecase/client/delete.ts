@@ -2,15 +2,15 @@ import { Injectable } from "@nestjs/common";
 import { ClientProtocol } from "src/app/domain/client/protocol/client.protocol";
 
 @Injectable()
-export class ListClientUsecase {
+export class DeleteClientUsecase {
 
     constructor(
         private readonly protocol: ClientProtocol
     ){}
 
-    async execte(){
+    async execute(id: string){
 
-        return await this.protocol.getAll();
+        return await this.protocol.delete(id);
 
     }
 

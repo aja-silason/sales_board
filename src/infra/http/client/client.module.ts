@@ -7,6 +7,10 @@ import { ClientProtocol } from 'src/app/domain/client/protocol/client.protocol';
 import { TypeORMClientRepository } from 'src/infra/repository/client/client.repository';
 import { CreateClientUsecase } from 'src/usecase/client/create';
 import { ListClientUsecase } from 'src/usecase/client/list';
+import { DeleteClientUsecase } from 'src/usecase/client/delete';
+import { UpdateClientUsecase } from 'src/usecase/client/update';
+import { FindOneClientCodeClientUsecase } from 'src/usecase/client/findOneClientCode';
+import { FindOneClientUsecase } from 'src/usecase/client/findOne';
 
 @Module({
   imports: [
@@ -17,6 +21,11 @@ import { ListClientUsecase } from 'src/usecase/client/list';
     ClientService,
     CreateClientUsecase,
     ListClientUsecase,
+    ListClientUsecase,
+    FindOneClientUsecase,
+    FindOneClientCodeClientUsecase,
+    UpdateClientUsecase,
+    DeleteClientUsecase,
     {
       provide: ClientProtocol,
       useClass: TypeORMClientRepository
