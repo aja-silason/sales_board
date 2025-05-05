@@ -1,26 +1,32 @@
 import { Injectable } from '@nestjs/common';
 import { CreateClientDto } from '../../../app/domain/client/dto/create-client.dto';
 import { UpdateClientDto } from '../../../app/domain/client/dto/update-client.dto';
+import { CreateClientUsecase } from 'src/usecase/client/create';
 
 @Injectable()
 export class ClientService {
-  create(createClientDto: CreateClientDto) {
-    return 'This action adds a new client';
+
+  constructor(
+    private readonly createClientUsecase: CreateClientUsecase
+  ){}
+
+  async create(body: CreateClientDto) {
+    return await this.createClientUsecase.execte(body);
   }
 
-  findAll() {
-    return `This action returns all client`;
+  async findAll() {
+    return await `This action returns all client`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} client`;
+  async findOne(id: string) {
+    return await `This action returns a #${id} client`;
   }
 
-  update(id: number, updateClientDto: UpdateClientDto) {
-    return `This action updates a #${id} client`;
+  async update(id: string, updateClientDto: UpdateClientDto) {
+    return await `This action updates a #${id} client`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} client`;
+  async remove(id: string) {
+    return await `This action removes a #${id} client`;
   }
 }

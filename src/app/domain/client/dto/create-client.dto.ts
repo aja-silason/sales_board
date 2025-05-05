@@ -14,6 +14,8 @@ export class CreateClientDto {
     @IsString()
     @ApiProperty()
     lastName: string;
+
+    clientCode: number;
     
     @IsString()
     @ApiProperty()

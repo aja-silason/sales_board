@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ClientModel } from 'src/app/domain/client/model/client.model';
 import { ClientProtocol } from 'src/app/domain/client/protocol/client.protocol';
 import { TypeORMClientRepository } from 'src/infra/repository/client/client.repository';
+import { CreateClientUsecase } from 'src/usecase/client/create';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { TypeORMClientRepository } from 'src/infra/repository/client/client.repo
   controllers: [ClientController],
   providers: [
     ClientService,
+    CreateClientUsecase,
     {
       provide: ClientProtocol,
       useClass: TypeORMClientRepository
