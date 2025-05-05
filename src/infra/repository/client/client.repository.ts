@@ -55,4 +55,14 @@ export class TypeORMClientRepository implements ClientProtocol {
 
     }
 
+    async finByClientCode(clientCode: string): Promise<ClientModel | null | any> {
+
+        const aClient = await this.repository.findOne({where: {clientCode: clientCode}});
+
+        if(!aClient) throw new NotFoundException("Client not found");
+
+        return aClient;
+
+    }
+
 }
