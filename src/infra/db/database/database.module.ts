@@ -11,6 +11,8 @@ import { ProductModel } from 'src/app/domain/product/model/product.model';
 import { ProductModule } from 'src/infra/http/product/product.module';
 import { StockModel } from 'src/app/domain/stock/model/stock.model';
 import { StockModule } from 'src/infra/http/stock/stock.module';
+import { ClientModel } from 'src/app/domain/client/model/client.model';
+import { ClientModule } from 'src/infra/http/client/client.module';
 
 
 @Module({
@@ -28,7 +30,7 @@ import { StockModule } from 'src/infra/http/stock/stock.module';
                 database: configService.get('DATABASE_DB', 'salesboard'),
                 
                 entities: [
-                    UserModel, RoleModel, EmployeeModel, ProductModel, StockModel
+                    UserModel, RoleModel, EmployeeModel, ProductModel, StockModel, ClientModel
                 ],
                 synchronize: true,
             })
@@ -37,7 +39,8 @@ import { StockModule } from 'src/infra/http/stock/stock.module';
         RoleModule,
         EmployeeModule,
         ProductModule,
-        StockModule
+        StockModule,
+        ClientModule
     ]
     
 })

@@ -8,9 +8,10 @@ import { RoleModule } from './infra/http/role/role.module';
 import { EmployeeModule } from './infra/http/employee/employee.module';
 import { ProductModule } from './infra/http/product/product.module';
 import { StockModule } from './infra/http/stock/stock.module';
+import { ClientModule } from './infra/http/client/client.module';
 
 @Module({
-  imports: [UserModule, DatabaseModule, ConfigureModule, RoleModule, EmployeeModule, ProductModule, StockModule],
+  imports: [UserModule, DatabaseModule, ConfigureModule, RoleModule, EmployeeModule, ProductModule, StockModule, ClientModule],
   controllers: [AppController],
   providers: [AppService],
 })
