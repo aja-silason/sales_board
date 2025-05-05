@@ -1,8 +1,9 @@
 import { BadRequestException } from "@nestjs/common";
+import { GenerateClientCode } from "./generate-client-code";
 
 export type ClientProps = {
     id?: string;
-    clientCode: number;
+    clientCode: string;
     firstName: string;
     lastName: string;
     telephone: string;
@@ -17,9 +18,10 @@ export class ClientEntity {
 
         this.validate(props);
 
-        this.generateClientCode(props);
+        const clientCode = GenerateClientCode.create(props.telephone);
 
         props.id = crypto?.randomUUID();
+        props.clientCode = clientCode;
         return new ClientEntity({
             ...props
         })
@@ -32,34 +34,10 @@ export class ClientEntity {
 
         for(const key of isValidate){
             const value = props[key];
-            if(value === undefined || value == null){
+            if(value === 'undefined' || value == null){
                 throw new BadRequestException(`${key} must be provided`);
             }
         }
-
-    }
-
-    private static generateClientCode(props: ClientProps){
-
-        const secondTimeDate = new Date();
-        const telephoneNumber = props.telephone.split('');
-        const ArraytreTelephoneNumber: Array<any> = [];
-
-        console.log("Data", new Date())
-        console.log("Data second", secondTimeDate.toJSON().split(':')[2].split('.')[0]);
-
-        
-        for (let _i: number = telephoneNumber.length - 3; _i < telephoneNumber.length; _i++ ){
-            ArraytreTelephoneNumber.push(telephoneNumber[_i])
-        }
-
-        const telephone = ArraytreTelephoneNumber.reverse().join('');
-        const firstTimeValue = new Date().toJSON().split('.')[1].split('Z')[0]
-        const secondTimeValue = new Date().toJSON().split(':')[2].split('.')[0]
-
-        const tamplate = `${telephone}-${firstTimeValue}-${secondTimeValue}`
-
-        return tamplate;
 
     }
 

@@ -7,7 +7,7 @@ export class ClientModel {
     id: string;
     
     @Column({name: 'client_code', type: 'varchar'})
-    clientCode: number;
+    clientCode: string;
 
     @Column()
     firstName: string;
