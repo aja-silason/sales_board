@@ -17,6 +17,8 @@ export class ClientEntity {
 
         this.validate(props);
 
+        this.generateClientCode(props);
+
         props.id = crypto?.randomUUID();
         return new ClientEntity({
             ...props
@@ -37,10 +39,27 @@ export class ClientEntity {
 
     }
 
-    private static generateClientCode(){
+    private static generateClientCode(props: ClientProps){
 
-        const firstValue = new Date();
-        //const 
+        const secondTimeDate = new Date();
+        const telephoneNumber = props.telephone.split('');
+        const ArraytreTelephoneNumber: Array<any> = [];
+
+        console.log("Data", new Date())
+        console.log("Data second", secondTimeDate.toJSON().split(':')[2].split('.')[0]);
+
+        
+        for (let _i: number = telephoneNumber.length - 3; _i < telephoneNumber.length; _i++ ){
+            ArraytreTelephoneNumber.push(telephoneNumber[_i])
+        }
+
+        const telephone = ArraytreTelephoneNumber.reverse().join('');
+        const firstTimeValue = new Date().toJSON().split('.')[1].split('Z')[0]
+        const secondTimeValue = new Date().toJSON().split(':')[2].split('.')[0]
+
+        const tamplate = `${telephone}-${firstTimeValue}-${secondTimeValue}`
+
+        return tamplate;
 
     }
 
