@@ -6,6 +6,7 @@ import { ClientModel } from 'src/app/domain/client/model/client.model';
 import { ClientProtocol } from 'src/app/domain/client/protocol/client.protocol';
 import { TypeORMClientRepository } from 'src/infra/repository/client/client.repository';
 import { CreateClientUsecase } from 'src/usecase/client/create';
+import { ListClientUsecase } from 'src/usecase/client/list';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { CreateClientUsecase } from 'src/usecase/client/create';
   providers: [
     ClientService,
     CreateClientUsecase,
+    ListClientUsecase,
     {
       provide: ClientProtocol,
       useClass: TypeORMClientRepository

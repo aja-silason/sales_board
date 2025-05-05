@@ -3,19 +3,15 @@ import { ClientEntity, ClientProps } from "src/app/domain/client/entities/client
 import { ClientProtocol } from "src/app/domain/client/protocol/client.protocol";
 
 @Injectable()
-export class CreateClientUsecase {
+export class ListClientUsecase {
 
     constructor(
         private readonly protocol: ClientProtocol
     ){}
 
-    async execte(body: ClientProps){
+    async execte(){
 
-        const aClient = ClientEntity.create(body);
-
-        console.log("Client with the code", aClient);
-
-        //await this.
+        return await this.protocol.getAll();
 
     }
 

@@ -2,12 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { CreateClientDto } from '../../../app/domain/client/dto/create-client.dto';
 import { UpdateClientDto } from '../../../app/domain/client/dto/update-client.dto';
 import { CreateClientUsecase } from 'src/usecase/client/create';
+import { ListClientUsecase } from 'src/usecase/client/list';
 
 @Injectable()
 export class ClientService {
 
   constructor(
-    private readonly createClientUsecase: CreateClientUsecase
+    private readonly createClientUsecase: CreateClientUsecase,
+    private readonly listClientUsecase: ListClientUsecase,
   ){}
 
   async create(body: CreateClientDto) {
@@ -15,7 +17,7 @@ export class ClientService {
   }
 
   async findAll() {
-    return await `This action returns all client`;
+    return await this.listClientUsecase.execte();
   }
 
   async findOne(id: string) {
