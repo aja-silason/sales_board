@@ -34,7 +34,7 @@ export class ClientEntity {
 
         for(const key of isValidate){
             const value = props[key];
-            if(value === 'undefined' || value == null){
+            if(value === undefined || value == null){
                 throw new BadRequestException(`${key} must be provided`);
             }
         }
